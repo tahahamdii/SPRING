@@ -1,14 +1,14 @@
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Setter;
 
 @Entity
+@Setter
 @Table(name = "Foyer")
 public class Foyer {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private long idFoyer;
 
@@ -17,4 +17,9 @@ public class Foyer {
 
     @Column(name="capaciteFoyer")
     private long capaciteFoyer;
+    @OneToOne (mappedBy = "foyer")
+    private Universite universite;
+
+    @ManyToOne(cascade = CascadeType.ALL,mappedBy="foyer")
+    private Set<Foyer> foyers ;
 }

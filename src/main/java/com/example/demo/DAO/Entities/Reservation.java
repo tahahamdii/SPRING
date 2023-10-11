@@ -1,8 +1,9 @@
-package tn.esprit.spring.DAO.Entities;
+package com.example.demo.DAO.Entities;
 
 
 import jakarta.persistence.*;
 
+import java.security.PrivateKey;
 import java.util.Date;
 
 @Entity
@@ -18,4 +19,8 @@ public class Reservation {
 
     @Column(name="estValide")
     private boolean estvalide;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Etudiant> Etudiants ;
+
 }

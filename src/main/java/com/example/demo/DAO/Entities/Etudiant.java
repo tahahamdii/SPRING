@@ -1,10 +1,9 @@
-package tn.esprit.spring.DAO.Entities;
+package com.example.demo.DAO.Entities;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "Etudiant")
@@ -27,6 +26,7 @@ public class Etudiant {
     private String ecole;
 
 
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Reservation> reservations ;
 
 }
